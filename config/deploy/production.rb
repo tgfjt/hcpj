@@ -2,7 +2,7 @@ role :app, %w{apluser@54.92.86.76}
 role :web, %w{apluser@54.92.86.76}
 role :db, %w{apluser@54.92.86.76}
 
-set :stage, :staging
+set :stage, :production
 set :branch, 'master'
 set :rails_env, 'production'
 set :unicorn_rack_env, 'production'
