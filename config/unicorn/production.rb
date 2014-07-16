@@ -1,5 +1,5 @@
 RAILS_ROOT = File.expand_path("../../..", __FILE__)
-application = 'hcpj'
+# RAILS_ROOT = "/var/www/hcpj"
 
 # Number of worker process
 worker_processes 3
@@ -8,7 +8,7 @@ worker_processes 3
 # listen 8080, :tcp_nopush
 listen "/tmp/unicorn.sock"
 #pid "#{RAILS_ROOT}/tmp/pids/unicorn.pid"
-pid "/var/www/#{application}/shared/pids/unicorn.pid"
+pid "/var/www/hcpj/shared/pids/unicorn.pid"
 
 # 60 seconds (the default)
 # timeout 30
