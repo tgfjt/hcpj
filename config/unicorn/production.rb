@@ -7,7 +7,6 @@ worker_processes 3
 # listen "#{RAILS_ROOT}/tmp/unicorn.sock", :backlog => 64
 # listen 8080, :tcp_nopush
 listen "/tmp/unicorn.sock"
-#pid "#{RAILS_ROOT}/tmp/pids/unicorn.pid"
 pid "/var/www/hcpj/shared/pids/unicorn.pid"
 
 # 60 seconds (the default)
