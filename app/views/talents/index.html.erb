@@ -1,0 +1,32 @@
+<h2>Talent List</h2>
+<div class="row">
+	<div class="col-md-10">
+	  <%= form_tag(search_talents_path, method: "get", class: "form-inline") do %>
+	    <div class="form-group">
+	    <%= text_field :talent, :search_param, placeholder: 'Keyword Search', class: 'form-control', size: '50' %>
+			</div>
+	  <% end %>
+	</div>
+</div>
+
+<div class="row">
+  <%= paginate @talents %>
+</div>
+<div class="row">
+  <%= @talents.each do |talent| %>
+
+  <div class="col-sm-6 col-md-2">
+    <div class="thumbnail">
+      <%= link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence %>
+      <div class="caption">
+        <%= link_to talent.name, talent_path(talent) %>
+      </div>
+    </div>
+  </div>
+
+	<% end %>
+</div>
+<div class="row">
+  <%= paginate @talents %>
+</div>
+

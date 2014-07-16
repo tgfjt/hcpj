@@ -1,0 +1,667 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*cssの初期化--------------------------------- */
+* {
+	margin:	0;
+	padding: 0;
+}
+body {
+	margin: 0px;
+	font-family: Meiryo UI,"ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+}
+
+body,pre,p,blockquote, 
+form,fieldset,input,textarea,select,option, 
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6, 
+table,th,td,embed,object {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-weight: normal;
+}
+table, caption, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-weight: normal;
+}
+span, em, strong, dfn, code, samp, kbd, var, cite, abbr, acronym, sub,
+sup, q, br, ins, del, a, img, object, iframe {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-weight: inherit;
+}
+img {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align:bottom;
+}
+
+div#container{
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+}
+div#container h1{
+	padding-top:5px;
+	padding-left:10px;
+	font-size:12px;
+	color:#000000;
+}
+div#header {
+	width:1000px;
+	height:80px;
+    background-image:url('/images/top/header.jpg');
+}
+div#header h1{
+	padding-top:5px;
+	padding-left:10px;
+	font-size:12px;
+	color:#ffffff;
+}
+div#header p{
+	width:400px;
+	height:20px;
+	display:block;
+	float:left;
+	padding-top:10px;
+	margin-bottom:43px;
+	text-indent: -9999px;
+}
+div#m_img{
+	font-size:12px;
+	width:747px;
+	height:293px;
+	float:right;
+	padding-top:1px;
+	margin-bottom:10px;
+	padding-right:0px;
+
+}
+div#header a{
+	display:block;
+	height:50px;
+}
+
+/* サーチ結果 */
+div#talent_database {
+	width:900px;
+	height:24px;
+	float:left;
+	padding-top:5px;
+	padding-left:10px;
+	margin-bottom:1px;
+	font-size:20px;
+	color:#e85201;
+	background-image:url('/images/top/talent_database.jpg');
+}
+
+
+#talent_database ul {
+padding: 0;
+
+}
+
+#talent_database ul li {
+float: left;
+list-style: none;
+line-height: 1;
+margin: 0 0 0 150px;
+}
+
+
+ul.talent_database li{
+	height:39px;
+	float:left;
+	list-style:none;
+}
+
+/* サーチ結果Showing Thousands */
+div#showing_thousands {
+	width:990px;
+	height:35px;
+	float:left;
+	padding-top:13px;
+	padding-left:10px;
+	margin-bottom:10px;
+	font-size:18px;
+	color:#e000000;
+	background-image:url('/images/top/showing-thousands.jpg');
+}
+
+
+#showing_thousands ul {
+padding: 0;
+
+}
+
+#showing_thousands ul li {
+float: left;
+list-style: none;
+line-height: 1;
+margin: 0 0 0 635px;
+}
+/* サーチ結果Showing Thousandsここまで */
+
+
+/* タレント写真 */
+div#talent_Photo {
+    width:163px;
+    height:181px;
+}
+
+div#talent_Photo01 {
+    width:163px;
+    height:181px;
+    background-image:url('images/top/chiaki_kuriyama.jpg');
+}
+
+div#talent_Photo02 {
+	width:163px;
+	height:181px;
+	background-image:url('images/top/Mocomichi-Hayami.jpg');
+}
+
+div#talent_Photo03 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/yui-aragaki.jpg);
+}
+
+div#talent_Photo04 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/zyun-Kaname.jpg);
+}
+
+div#talent_Photo05 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/Satosi-Tumabuki.jpg);
+}
+
+div#talent_Photo06 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/sekinemari.jpg);
+}
+
+div#talent_Photo07 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/Masato-Sakai.jpg);
+}
+
+div#talent_Photo08 {
+	width:163px;
+	height:181px;
+	background-image:url(../../images/top/Masami-Nagasawa.jpg);
+}
+/* タレント写真ここまで */
+
+
+/* ジェンダーメニュー各ボタン */
+ul.menu_top {
+	width:243px;
+	height:104px;
+	clear: both;
+	padding-top:0px;
+}
+ul.menu_top li{
+	height:104px;
+	float:left;
+	list-style:none;
+}
+
+ul.menu_top li a{
+	height:104px;
+	display:block;
+	background-image:url(../../images/top/gender-02.jpg);
+	text-indent: -9999px;
+}
+ul.menu_top li.bt1{ width:120px; }
+ul.menu_top li.bt2{ width:120px; }
+
+
+/* メニュー各ボタン */
+li.bt1 a:link, li.bt1 a:visited { background-position: 0 0; }
+li.bt2 a:link, li.bt2 a:visited { background-position: -120px 0; }
+
+
+
+
+
+/* ロールオーバー後 */
+li.bt1 a:hover { background-position: 0 104px; }
+li.bt2 a:hover { background-position: -120px 104px; }
+
+
+
+
+
+
+div#wrapper {
+	width:1000px;
+	height: auto;
+	padding-top:0px;
+	background-color:#ffffff;
+	font-size:12px;
+	color:#000000;
+}
+
+/* 右下メニュー */
+div#menu_center02 {
+	width:24px;
+	height: auto;
+	float:right;
+	background-color:#00000;
+	padding-top: 2px;
+	padding-left: 10px;
+	clear:both;
+}
+div.area_menu2 {
+	width:243px;
+	height: auto;
+	background-image:url(../../images/top/bg_contents.jpg);
+}
+ul.genre2_menu li{
+	height:46px;
+	padding-top: 0px;
+	float:left;
+	list-style:none;
+}
+ul.genre2_menu li.bt5{ width:243px;  }
+ul.genre2_menu li.bt6{ width:243px;  }
+ul.genre2_menu li.bt7{ width:243px;  }
+ul.genre2_menu li.bt8{ width:243px;  }
+ul.genre2_menu li.bt9{ width:243px;  }
+ul.genre2_menu li.bt10{ width:243px;  }
+
+ul.genre2_menu li a{
+
+	height:46px;
+	display:block;
+	background-image:url(../../images/top/leftmenu_bt.jpg);
+	text-indent: -9999px;
+}
+
+/* 右下メニュー */
+li.bt5 a:link, li.bt5 a:visited { background-position: 0px 0px; }
+li.bt6 a:link, li.bt6 a:visited { background-position: 0px -45px; }
+li.bt7 a:link, li.bt7 a:visited { background-position: 0px -90px; }
+li.bt8 a:link, li.bt8 a:visited { background-position: 0px -135px; }
+li.bt9 a:link, li.bt9 a:visited { background-position: 0px -180px; }
+li.bt10 a:link, li.bt10 a:visited { background-position: 0px -225px; }
+
+
+
+/* ロールオーバー後 */
+li.bt5 a:hover { background-position: 0px 0px; }
+li.bt6 a:hover { background-position: -243px -45px; }
+li.bt7 a:hover { background-position: -243px -90px; }
+li.bt8 a:hover { background-position: -243px -134px; }
+li.bt9 a:hover { background-position: -243px -180px; }
+li.bt10 a:hover { background-position: -243px -225px; }
+
+
+
+/* 右ブロック */
+div#side {
+	width:243px;
+	height: auto;
+	float:right;
+	margin-left:0px;
+	padding-left: 5px;
+
+}
+
+/* 右ブロック中身 */
+div#center_01 {
+	width:243px;
+	height: auto;
+	float:right;
+	background-color:#01110;
+	padding-top: 0px;
+	clear:both;
+}
+
+div#center_01 h4 {
+	height: auto;
+	font-family:"Meiryo UI"; 
+	clear:both;
+}
+
+/* 左タレント */
+div#contents {
+	width:717px;
+	height: auto;
+	float:left;
+}
+
+/* ここまで */
+
+
+
+
+
+/* フッダ */
+
+div#footer {
+	height: auto;
+	background-image:url('/images/top/bg_footer.jpg');
+	clear:both;
+	color:#ffffff;
+}
+div#footer p {
+	font-size:12px;
+	line-height:150%;
+	color:#ffffff;
+	clear: both;
+	padding-top:5px;
+	text-align: center;
+}
+div#footer img {
+	padding-top:10px;
+}
+div.footer_menu {
+	width:1000px;
+	height: 33px;
+	padding-top:10px;
+	margin:0 auto;
+	clear:both;
+}
+div.footer_menu a { 
+	text-decoration: none;
+	color:#ffffff;
+}
+div.footer_menu a:hover{ color:blue; 
+}
+
+
+/*########################___     login-menu ___########################*/
+div.info{
+	font-size:16px;
+	width:320px;
+	height:60px;
+	float:right;
+	color:#bc052a;
+	padding-right:10px;
+	margin-top:5px;
+}
+
+#login-menu {
+top: 30px;
+right: 0;
+font-size: 16px;
+list-style:none;
+
+}
+
+#login-menu ul {
+
+}
+
+#login-menu li {
+margin: 0 0 0 25px;
+float:right;
+
+}
+
+#login-menu li a {
+text-decoration: none;
+
+}
+
+
+/*#_---------------------------___*/
+/*########################___ search ___########################*/
+#search {
+margin: 0 0 20px;
+padding: 5px 0;
+background-image:url('/images/top/bg_search.jpg');
+	width:1000px;
+	height:40px;
+	clear: both;
+	padding-top:0px;
+	padding-bottom:20px;
+/*
+border-bottom: solid 1px #e6e6e6;
+*/
+}
+
+
+
+#search ul {
+padding: 0;
+}
+
+#search ul li {
+float: left;
+list-style: none;
+line-height: 1;
+}
+
+#search input {
+width: 430px;
+margin: 0 8px 0 0;
+padding: 4px;
+font-size: 18px;
+border: none;
+border: solid 2px #ccc;
+}
+
+#search .search-submit {
+width: 100px;
+margin: 0;
+padding: 6px 0;
+background: #e85201;
+color: #fff;
+border: none;
+}
+
+
+/*#_---------------------------___*/
+/*########################___ page-common ___########################*/
+
+
+
+/*########################___     heading ___########################*/
+h2 {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+background: url() left top no-repeat;
+font-size: 14px;
+}
+
+h2.heading-basic {
+margin: 0 0 15px 0;
+padding: 14px 24px;
+background: url() left top no-repeat;
+font-size: 18px;
+}
+
+h3 {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+background: url() left top no-repeat;
+font-size: 12px;
+}
+
+h3.heading-basic {
+margin: 5px 8px 10px 9px;
+padding: 5px 16px 7px;
+background: url() left top no-repeat;
+font-size: 14px;
+}
+
+h3 a {
+}
+
+/*########################___     box-list ___########################*/
+.box-list {
+overflow: hidden;
+position: relative;
+}
+
+.list-column {
+clear: both;
+}
+
+.box-list ul {
+position: relative;
+float: left;
+width: 100%;
+left: 50%;
+padding: 0;
+}
+
+.box-list ul li {
+overflow: hidden;
+position: relative;
+float: left;
+left: -50%;
+list-style: none;
+text-align: center;
+}
+
+.box-list ul li .item-box {
+overflow: hidden;
+}
+
+.box-list ul li img {
+display: block;
+margin: 0 auto;
+}
+
+.box-list .item-name,.box-list .item-info,.box-list .item-price {
+display: block;
+
+}
+
+
+/*########################___       base-setting ___########################*/
+.list-column {
+margin: 0 0 0 -40px;
+}
+
+.box-list ul li {
+width: 25%;
+}
+
+.box-list ul li .item-box {
+margin: 0 0 30px 40px;
+}
+
+.box-list ul li img {
+width: 100%;
+}
+
+.box-list ul li a.link-image img {
+/*
+border: solid 1px #999;
+*/
+}
+
+.box-list ul li a.link-image:hover img {
+/*
+border: solid 1px #00f;
+*/
+}
+
+.box-list ul li p {
+padding: 0 0;
+}
+
+.item-name {
+margin: 1px 0 0;
+padding: 5px 0 4px;
+}
+
+a:hover .item-name {
+background: #e85201;
+color: #fff;
+
+}
+
+
+
+
+/*#_---------------------------___*/
+/*########################___ footer ___########################*/
+#footer {
+margin: 60px 0 0;
+padding: 0 0 10px;
+background: #f3f3f3;
+	font-size:12px;
+}
+
+#footer-inside {
+position: relative;
+}
+
+#footer-sitename {
+float:right;
+top: 20px;
+right: 0px;
+font-size: 24px;
+}
+
+#footer-sitename a {
+color: #444;
+}
+
+#footer-nav {
+padding: 20px 0 35px;
+}
+
+#footer-nav ul {
+padding: 0;
+}
+
+#footer-nav ul li {
+float: left;
+margin: 0 15px 0 0;
+padding: 0 15px 0 0;
+list-style: none;
+line-height: 1;
+border-right: solid 1px #ccc;
+}
+
+#footer-nav ul li.footer-myaccount {
+border: none;
+}
+
+#footer-nav a {
+color: #666;
+}
+
+#footer-nav a:hover {
+color: #000;
+}
+
+#footer-menu ul {
+float: left;
+width: 20%;
+padding: 0;
+}
+
+#footer-menu li {
+list-style: none;
+padding: 0 0 10px;
+}
+
+#copyright {
+text-align: right;
+color: #666;
+}
+
+}

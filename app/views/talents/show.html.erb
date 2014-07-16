@@ -1,0 +1,46 @@
+<div id="contents">
+  <div class="page-header">
+    <div class="row">
+	    <h1><%= @talent.name %> <button class="btn btn-info">add my favorite</button></h1>
+	  </div>
+  </div>
+
+  <div class="row">
+	  <div class="col-md-3">
+	    <div class="row">
+		    <%= image_tag @talent.mainimage.url(:large), alt: @talent.name  %>
+	    </div>
+	    <div class="row">
+	      <table class="table">
+		      <tbody>
+			      <tr>
+			        <td><h4>age</h4></td>
+			        <td><h4><%= @talent.age %></h4></td>
+			      </tr>
+			      <tr>
+			        <td><h4>gender</h4></td>
+			        <td><h4><%= @talent.sex %></h4></td>
+			      </tr>
+		      </tbody>
+	      </table>
+	    </div>
+	  </div>
+
+	  <div class="col-md-8 col-md-offset-1">
+		  <div class="page-header">
+			  <h3>Photos</h3>
+		  </div>
+		  <%= @talent.photos.each do |photo| %>
+			  <a data-toggle="lightbox" href="#demoLightbox"></a>
+		    <%= image_tag photo.image.url(:thumb), size: "97x141" %>
+		  <% end %>
+
+	    <div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+	      <div class='lightbox-content'>
+	        <img src="image.png">
+	        <div class="lightbox-caption"><p>Your caption here</p></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

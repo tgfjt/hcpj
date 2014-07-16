@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-md-9 col-md-offset-1 col-sm-6">
+    <%= form_for @talent, class: "reg-page", url: {:action => var_action} do |f| %>
+      <div class="reg-header">
+        <h2>Register as Talent</h2>
+      </div>
+
+      <!-- company profile -->
+      <div class="panel panel-green margin-bottom-40">
+        <div class="panel-heading"><h3 class="panel-title">talent profile</h3></div>
+        <div class="panel-body">
+          <div class="form-group margin-bottom-20">
+            <label>name *</label>
+            <%= f.text_field :name, class: 'form-control required', placeholder: 'name' %>
+          </div>
+          <div class="form-group margin-bottom-20">
+            <label>firstname *</label>
+            <%= f.text_field :firstname, class: 'form-control required', placeholder: 'firstname' %>
+          </div>
+          <div class="form-group margin-bottom-20">
+            <label>lastname *</label>
+            <%= f.text_field :lastname, class: 'form-control required', placeholder: 'lastname' %>
+          </div>
+          <div class="form-group margin-bottom-20">
+            <label>age</label>
+            <%= f.text_field :age, class: 'form-control required', placeholder: 'age' %>
+          </div>
+          <div class="form-group margin-bottom-20">
+            <label>gender</label>
+            <%= f.select :sex, Talent.sexes.keys, class: 'form-control' %>
+          </div>
+          <div class="form-group margin-bottom-20">
+            <label>main image *</label>
+            <%= f.file_field :mainimage, class: 'form-control required' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :file, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <ul>
+              <%= f.fields_for :photos do |photo_form| %>
+                <li>
+                  <%= render partial: 'shared/photo', locals: {f: photo_form} %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+		  <% if @talent.id.present? %>
+      <div class="row">
+        <div class="form-group">
+          <%= link_to 'television new', new_talent_television_path(@talent), class: 'btn btn-default' %>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>title</th>
+              <th>role_position</th>
+              <th>director_company</th>
+              <th>location</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @talent.televisions.each do |television| %>
+              <tr>
+                <td class="select"><%= check_box 'chkbox_array', television.id %></td>
+                <td class="id"><%= television.id %></td>
+                <td><%= link_to television.title, edit_talent_television_path(@talent, television) %></td>
+                <td>television.role_position</td>
+                <td>television.director_company</td>
+                <td>television.location</td>
+                <td class="select_button">
+                  <%= link_to 'Edit', edit_talent_television_path(@talent, television), :class => "btn btn-primary btn-xs" %>
+                  <%= link_to 'Destroy', talent_television_path(@talent, television), :class => "btn btn-danger btn-xs" , method: :delete, data: { confirm: 'delete it. ok?' } %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+			<% end %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="actions">
+            <%= f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: '処理中です'} %>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+    <% end %>
+  </div>
+</div><!--/row-->
+<script>
+	$(function(){
+		$(".new_casting").validate({
+			rules: {
+				agree: "required",
+				website: "required"
+			}
+		});
+	});
+</script>
