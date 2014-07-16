@@ -21,7 +21,7 @@
 				      My Project<span class="caret"></span>
 				    </a>
 				    <ul class="dropdown-menu">
-					    <%= @projects.each do |project| %>
+					    <% @projects.each do |project| %>
 					      <li><%= link_to project.name, projects_path(project) %></li>
 						  <% end %>
 				    </ul>

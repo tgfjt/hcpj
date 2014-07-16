@@ -30,7 +30,7 @@
 		  <div class="page-header">
 			  <h3>Photos</h3>
 		  </div>
-		  <%= @talent.photos.each do |photo| %>
+		  <% @talent.photos.each do |photo| %>
 			  <a data-toggle="lightbox" href="#demoLightbox"></a>
 		    <%= image_tag photo.image.url(:thumb), size: "97x141" %>
 		  <% end %>

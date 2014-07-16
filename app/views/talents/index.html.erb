@@ -1,7 +1,7 @@
 <h2>Talent List</h2>
 <div class="row">
 	<div class="col-md-10">
-	  <%= form_tag(search_talents_path, method: "get", class: "form-inline") do %>
+	  <% form_tag(search_talents_path, method: "get", class: "form-inline") do %>
 	    <div class="form-group">
 	    <%= text_field :talent, :search_param, placeholder: 'Keyword Search', class: 'form-control', size: '50' %>
 			</div>
@@ -13,7 +13,7 @@
   <%= paginate @talents %>
 </div>
 <div class="row">
-  <%= @talents.each do |talent| %>
+  <% @talents.each do |talent| %>
 
   <div class="col-sm-6 col-md-2">
     <div class="thumbnail">
