@@ -42,6 +42,10 @@ class Talent < ActiveRecord::Base
     time :updated_at
   end
 
+  def my_favorite_talent?(user)
+    projects = Project.my_project user
+    projects.any? { |project| Favorite.where(project: project, talent: self).exists? }
+  end
 
   @@max_images = 5
   def build_images
