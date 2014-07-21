@@ -1,0 +1,78 @@
+.row
+  .col-md-9.col-md-offset-1.col-sm-6
+    = form_for @talent, class: "reg-page", url: {:action => var_action} do |f|
+      .reg-header
+        %h2 Register as Talent
+      / company profile
+      .panel.panel-green.margin-bottom-40
+        .panel-heading
+          %h3.panel-title talent profile
+        .panel-body
+          .form-group.margin-bottom-20
+            %label name *
+            = f.text_field :name, class: 'form-control required', placeholder: 'name'
+          .form-group.margin-bottom-20
+            %label firstname *
+            = f.text_field :firstname, class: 'form-control required', placeholder: 'firstname'
+          .form-group.margin-bottom-20
+            %label lastname *
+            = f.text_field :lastname, class: 'form-control required', placeholder: 'lastname'
+          .form-group.margin-bottom-20
+            %label age
+            = f.text_field :age, class: 'form-control required', placeholder: 'age'
+          .form-group.margin-bottom-20
+            %label gender
+            = f.select :sex, Talent.sexes.keys, class: 'form-control'
+          .form-group.margin-bottom-20
+            %label main image *
+            = f.file_field :mainimage, class: 'form-control required'
+      .row
+        .form-group
+          = f.label :file, class:'col-lg-2 control-label'
+          .col-lg-10
+            %ul
+              = f.fields_for :photos do |photo_form|
+                %li
+                  = render partial: 'shared/photo', locals: {f: photo_form}
+      - if @talent.id.present?
+        .row
+          .form-group
+            = link_to 'television new', new_talent_television_path(@talent), class: 'btn btn-default'
+          .table-responsive
+            %table.table.table-striped.table-bordered.table-hover
+              %thead
+                %tr
+                  %th
+                  %th ID
+                  %th title
+                  %th role_position
+                  %th director_company
+                  %th location
+                  %th
+              %tbody
+                - @talent.televisions.each do |television|
+                  %tr
+                    %td.select= check_box 'chkbox_array', television.id
+                    %td.id= television.id
+                    %td= link_to television.title, edit_talent_television_path(@talent, television)
+                    %td television.role_position
+                    %td television.director_company
+                    %td television.location
+                    %td.select_button
+                      = link_to 'Edit', edit_talent_television_path(@talent, television), :class => "btn btn-primary btn-xs"
+                      = link_to 'Destroy', talent_television_path(@talent, television), :class => "btn btn-danger btn-xs" , method: :delete, data: { confirm: 'delete it. ok?' }
+      .row
+        .col-md-6
+          .actions
+            = f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: '処理中です'}
+      %hr/
+/ /row
+:javascript
+  $(function(){
+  	$(".new_casting").validate({
+  		rules: {
+  			agree: "required",
+  			website: "required"
+  		}
+  	});
+  });

@@ -25,3 +25,4 @@ config/secrets.yml
 
 .idea
 .DS_Store
+/solr

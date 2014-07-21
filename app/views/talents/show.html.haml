@@ -1,0 +1,34 @@
+#contents
+  .page-header
+    .row
+      %h1
+        = @talent.name
+        %button.btn.btn-info add my favorite
+  .row
+    .col-md-3
+      .row
+        = image_tag @talent.mainimage.url(:large), alt: @talent.name
+      .row
+        %table.table
+          %tbody
+            %tr
+              %td
+                %h4 age
+              %td
+                %h4= @talent.age
+            %tr
+              %td
+                %h4 gender
+              %td
+                %h4= @talent.sex
+    .col-md-8.col-md-offset-1
+      .page-header
+        %h3 Photos
+      - @talent.photos.each do |photo|
+        %a{"data-toggle" => "lightbox", :href => "#demoLightbox"}
+        = image_tag photo.image.url(:thumb), size: "97x141"
+      #demoLightbox.lightbox.hide.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+        .lightbox-content
+          %img{:src => "image.png"}/
+          .lightbox-caption
+            %p Your caption here

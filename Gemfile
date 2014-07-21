@@ -14,6 +14,9 @@ gem 'unicorn'
 # gem 'bootstrap-sass'
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'simple_form'
+gem 'haml-rails'
+gem 'erb2haml'
 
 gem 'rails_config'
 gem 'kaminari'
@@ -26,6 +29,7 @@ gem 'rmagick'
 gem 'mini_magick'
 
 # authentication
+gem 'devise'
 gem 'cancancan'
 
 # solr

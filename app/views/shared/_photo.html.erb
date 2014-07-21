@@ -1,8 +1,0 @@
-<% image = f.object %>
-<% if image && image.image? %>
-  <label><%= f.check_box :_destroy %></label>
-  <%= image_tag image.image.url(:thumb) %>
-
-<% else %>
-  <%= f.file_field :image %>
-<% end %>

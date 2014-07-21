@@ -1,0 +1,18 @@
+%h2 Talent List
+.row
+  .col-md-10
+    = form_tag(search_talents_path, method: "get", class: "form-inline") do
+      .form-group
+        = text_field :talent, :search_param, placeholder: 'Keyword Search', class: 'form-control', size: '50'
+.row
+  = paginate @talents
+.row
+  - @talents.each do |talent|
+    .col-sm-6.col-md-2
+      .thumbnail
+        = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence
+        .caption
+          = link_to talent.name, talent_path(talent)
+.row
+  = paginate @talents
+
