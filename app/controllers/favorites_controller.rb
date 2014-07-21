@@ -10,8 +10,8 @@ class FavoritesController < ApplicationController
       flash[:notice] = 'favorite has been completed.'
       redirect_to root_path
     else
-      flash.now[:alert] = 'favorite has already taken.'
-      render action: 'new'
+      flash[:alert] = 'favorite has already taken.'
+      redirect_to new_favorite_path
     end
   end
 
