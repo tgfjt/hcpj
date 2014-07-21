@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def my_project
-    @projects = Project.all
+    @projects = Project.my_project current_user
   end
 
   def configure_permitted_parameters

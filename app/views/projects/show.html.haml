@@ -1,0 +1,12 @@
+= link_to 'back', :back, class: 'btn btn-default'
+
+%h2
+  = @project.name
+
+.row
+  - @project.talents.each do |talent|
+    .col-sm-6.col-md-2
+      .thumbnail
+        = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence
+        .caption
+          = link_to talent.name, talent_path(talent)

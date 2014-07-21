@@ -1,9 +1,12 @@
+= link_to 'back', :back, class: 'btn btn-default'
+
 #contents
   .page-header
     .row
       %h1
         = @talent.name
-        %button.btn.btn-info add my favorite
+        - if user_signed_in? && current_user.projects.exists?
+          = link_to 'add my favorite', new_favorites_path(@talent), class: 'btn btn-info'
   .row
     .col-md-3
       .row
@@ -29,6 +32,6 @@
         = image_tag photo.image.url(:thumb), size: "97x141"
       #demoLightbox.lightbox.hide.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
         .lightbox-content
-          %img{:src => "image.png"}/
+          %img{:src => ""}/
           .lightbox-caption
             %p Your caption here

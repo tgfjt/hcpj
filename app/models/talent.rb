@@ -20,6 +20,10 @@
 #
 
 class Talent < ActiveRecord::Base
+  has_many :favorites
+  has_many :projects, through: :favorites
+  accepts_nested_attributes_for :favorites, allow_destroy: true
+
   has_many :photos, as: :photable
   accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
 
