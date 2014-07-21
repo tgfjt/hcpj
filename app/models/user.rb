@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: { casting: 0, production: 1 }
+
+  has_many :projects
 end

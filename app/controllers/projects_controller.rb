@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.all
+    @projects = Project.my_project current_user
   end
 
   def new
@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_param)
+    @project.user = current_user
     if @project.save
       flash[:notice] = "created successful."
       redirect_to projects_path
@@ -34,6 +35,9 @@ class ProjectsController < ApplicationController
     if @project.destroy
       redirect_to projects_path
     end
+  end
+
+  def show
   end
 
   private

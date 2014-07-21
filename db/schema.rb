@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721032641) do
+ActiveRecord::Schema.define(version: 20140721202453) do
+
+  create_table "favorites", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "talent_id"
+    t.string   "memo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["project_id", "talent_id"], name: "index_favorites_on_project_id_and_talent_id", unique: true, using: :btree
+  add_index "favorites", ["project_id"], name: "index_favorites_on_project_id", using: :btree
+  add_index "favorites", ["talent_id"], name: "index_favorites_on_talent_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.integer  "photable_id"
@@ -25,14 +37,17 @@ ActiveRecord::Schema.define(version: 20140721032641) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "description"
     t.string   "other"
+    t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "talents", force: true do |t|
     t.string   "name"

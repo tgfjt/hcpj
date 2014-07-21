@@ -1,0 +1,30 @@
+= link_to 'back', :back, class: 'btn btn-default'
+
+.col-md-7
+  %h2 Add Favorite
+  .row
+    %h4
+      Which the project do you add favorite to?
+  .row
+
+    = form_for @favorite do |f|
+
+      = hidden_field :favorite, :talent_id
+      %h3
+        select project
+      - @selectable_projects.each_with_index do |project, index|
+        .radio
+          %label
+            - if index == 0
+              %input{ type: 'radio', name: 'favorite[project_id]', value: project.id, checked: true }
+            - else
+              %input{ type: 'radio', name: 'favorite[project_id]', value: project.id }
+            = project.name
+
+      %h3
+        memo
+
+      = f.text_area :memo, class: 'form-control'
+
+      %button.btn.btn-lg.btn-primary{ type: 'submit' } save
+

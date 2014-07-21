@@ -1,0 +1,28 @@
+.col-md-7
+  %h2 Add Favorite
+  .row
+    %h4
+      Which the project do you add favorite to?
+  .row
+    = form_tag add_my_favorite_talent_path(@talent), { class: '' } do
+
+      = render 'shared/error_messages', object: @talent
+
+      %h3
+        select project
+      - @projects.each_with_index do |project, index|
+        .radio
+          %label
+            - if index == 0
+              %input{ type: 'radio', name: 'project[id]', value: project.id, checked: true }
+            - else
+              %input{ type: 'radio', name: 'project[id]', value: project.id }
+            = project.name
+
+      %h3
+        memo
+
+      %textarea{ class: 'form-control', rows: 3, name: 'favorite[memo]' }
+
+      %button.btn.btn-lg.btn-primary{ type: 'submit' } save
+

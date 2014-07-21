@@ -1,9 +1,8 @@
 class TalentsController < ApplicationController
-  before_action :set_talent, only: [:show, :edit, :update]
+  before_action :set_talent, only: [:show, :edit, :update, :add_my_favorite_confirm, :add_my_favorite]
 
   def index
     @talents = Talent.all.page params[:page]
-    @projects = Project.all
   end
 
   def search
@@ -46,7 +45,6 @@ class TalentsController < ApplicationController
 
   def show
   end
-
 
   private
   def talent_params
