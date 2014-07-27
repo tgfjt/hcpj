@@ -43,8 +43,7 @@ class Talent < ActiveRecord::Base
   end
 
   def my_favorite_talent?(user)
-    projects = Project.my_project user
-    projects.any? { |project| Favorite.where(project: project, talent: self).exists? }
+    Favorite.where(user: user, talent: self).exists?
   end
 
   @@max_images = 5

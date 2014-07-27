@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites, only: [:new, :create, :destroy], except: [:new] do
+  resources :favorites, only: [:index, :new, :create, :destroy], except: [:new] do
     collection do
       get 'new/:talent_id', to: 'favorites#new', as: :new
     end
