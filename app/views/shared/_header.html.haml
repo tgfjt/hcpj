@@ -1,0 +1,36 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{:href => "/"} HCPJ Talent Search
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{:href => "/"} Home
+
+        - if user_signed_in?
+          %li
+            = link_to 'My Favorite', favorites_path
+          - unless can? :casting, current_user
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                Talent
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to 'new talent', new_talent_path
+          - unless can? :production, current_user
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                Project
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to 'my project', projects_path
+                %li= link_to 'create project', new_project_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              = current_user.name
+              %span.caret
+            %ul.dropdown-menu
+              %li= current_user.email
+          %li= link_to 'Sign Out', destroy_user_session_path
+        - else
+          %li= link_to 'Sign In', new_user_session_path

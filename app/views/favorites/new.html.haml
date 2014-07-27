@@ -12,13 +12,15 @@
       = hidden_field :favorite, :talent_id
       %h3
         select project
+
+      .radio
+        %label
+          %input{ type: 'radio', name: 'favorite[project_id]', value: nil, checked: true }
+          選択しない
       - @selectable_projects.each_with_index do |project, index|
         .radio
           %label
-            - if index == 0
-              %input{ type: 'radio', name: 'favorite[project_id]', value: project.id, checked: true }
-            - else
-              %input{ type: 'radio', name: 'favorite[project_id]', value: project.id }
+            %input{ type: 'radio', name: 'favorite[project_id]', value: project.id }
             = project.name
 
       %h3
