@@ -1,15 +1,14 @@
 class FavoritesController < ApplicationController
   def index
-    my_favorites = Favorite.where(user: current_user).order(:project_id)
-    my_projects = my_favorites.group(:project_id).to_a
-    @favorite_projects = my_projects.reject { |favorite_project| favorite_project.project.blank? }
+    my_favorites = Favorite.my_favorites current_user
+    @favorite_projects = Favorite.my_favorite_selected_project current_user
 
     @my_project = {}
     @favorite_projects.each do |favorite|
       @my_project[favorite.project.name] = my_favorites.where(project: favorite.project) if favorite.project.presence
     end
 
-    @my_favorites_non_project = my_projects.reject { |favorite_project| favorite_project.project.presence }
+    @my_favorites_non_project = Favorite.my_favorite_non_project current_user
   end
 
   def new

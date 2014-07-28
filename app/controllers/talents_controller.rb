@@ -6,12 +6,7 @@ class TalentsController < ApplicationController
   end
 
   def search
-    search = Talent.solr_search do
-      fulltext params[:talent][:search_param]
-      # with :published, 'public'
-      order_by(:updated_at, :desc)
-    end
-    @talents = search.results
+    @talents = Talent.where("name like ?", "%#{params[:talent][:search_param]}%").page params[:page]
     render 'index'
   end
 

@@ -33,15 +33,6 @@ class Talent < ActiveRecord::Base
   # enum sex: [:male, :female] unless instance_methods.include? :sex
   enum sex: { male: 0, female: 1 }
 
-  searchable do
-    text :name, stored: true
-    text :firstname, stored: true
-    text :lastname, stored: true
-    integer :age
-    # integer :sex
-    time :updated_at
-  end
-
   def my_favorite_talent?(user)
     Favorite.where(user: user, talent: self).exists?
   end

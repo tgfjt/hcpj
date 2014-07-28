@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 20140727082511) do
   end
 
   create_table "favorites", force: true do |t|
-    t.integer  "user_id"
     t.integer  "project_id"
     t.integer  "talent_id"
+    t.integer  "user_id"
     t.string   "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "favorites", ["project_id", "talent_id"], name: "index_favorites_on_project_id_and_talent_id", unique: true, using: :btree
+  add_index "favorites", ["project_id", "talent_id", "user_id"], name: "index_favorites_on_project_id_and_talent_id_and_user_id", unique: true, using: :btree
   add_index "favorites", ["project_id"], name: "index_favorites_on_project_id", using: :btree
   add_index "favorites", ["talent_id"], name: "index_favorites_on_talent_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 20140727082511) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "talents", force: true do |t|
     t.string   "name"
