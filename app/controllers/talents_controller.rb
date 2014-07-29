@@ -39,6 +39,7 @@ class TalentsController < ApplicationController
   end
 
   def show
+    @myfavorites = @talent.my_favorite_self current_user
   end
 
   private

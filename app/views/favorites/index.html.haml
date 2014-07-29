@@ -5,7 +5,6 @@
 
     - @my_project[favorite.project.name].each do |my_favorite|
       .col-sm-6.col-md-2
-        = simple_format my_favorite.memo
         .thumbnail
           = link_to image_tag(my_favorite.talent.mainimage.url(:thumb), size: "163x181", alt: my_favorite.talent.name), talent_path(my_favorite.talent) if my_favorite.talent.mainimage.presence
           .caption
@@ -17,7 +16,6 @@
     %h4 non project
   - @my_favorites_non_project.each do |favorite_non_project|
     .col-sm-6.col-md-2
-      = simple_format favorite_non_project.memo
       .thumbnail
         = link_to image_tag(favorite_non_project.talent.mainimage.url(:thumb), size: "163x181", alt: favorite_non_project.talent.name), talent_path(favorite_non_project.talent) if favorite_non_project.talent.mainimage.presence
         .caption

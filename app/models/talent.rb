@@ -37,6 +37,10 @@ class Talent < ActiveRecord::Base
     Favorite.where(user: user, talent: self).exists?
   end
 
+  def my_favorite_self(user)
+    Favorite.where(user: user, talent: self).order(:project_id)
+  end
+
   @@max_images = 5
   def build_images
     (@@max_images - self.photos.size).times { self.photos.build }
