@@ -8,8 +8,9 @@
           %a{:href => "/"} Home
 
         - if user_signed_in?
-          %li
-            = link_to 'My Favorite', favorites_path
+          - if can? :casting, current_user
+            %li
+              = link_to 'My Favorite', favorites_path
           - unless can? :casting, current_user
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
