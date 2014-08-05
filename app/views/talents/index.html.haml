@@ -13,8 +13,9 @@
         = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence
         .caption
           = link_to talent.name, talent_path(talent)
-        .caption
-          = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
+        - if user_signed_in?
+          .caption
+            = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
         - if talent.my_favorite_talent? current_user
           %span.glyphicon.glyphicon-star
 .row
