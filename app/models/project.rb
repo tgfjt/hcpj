@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   has_many :talents, through: :favorites
 
   validates :name, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   default_scope -> { includes :user }
   scope :my_project, lambda { |my| where(user: my) }

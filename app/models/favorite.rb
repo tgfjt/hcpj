@@ -5,7 +5,7 @@ class Favorite < ActiveRecord::Base
 
   validates :user, presence: true
   validates :talent, presence: true
-  validates :user, uniqueness: { scope: [:project, :talent] }
+  validates :user, uniqueness: { scope: [:project, :talent, :project_name] }
 
   default_scope -> { includes(:project, :talent, :user) }
   scope :my_favorites, lambda { |me| where(user: me).order(:project_id) }

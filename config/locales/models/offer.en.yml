@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      offer:
+        confirm_schedule: 詳細スケジュール確認
+        request_picture: 写真のリクエスト
+        request_self_movie: 自己紹介ビデオのリクエスト
+        request_action_movie: アクションビデオのリクエスト
+        request_for_appearance: 出演依頼
+        request_for_audition: オーディション参加依頼
+        other: その他

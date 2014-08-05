@@ -2,41 +2,35 @@
   .col-md-9.col-md-offset-1.col-sm-6
     .reg-header
       %h2 Register as Project
-    = simple_form_for @project, html: { class: 'form-horizontal' } do |f|
-      = f.input :name, required: false
-      = f.input :start_date, as: :date
-      = f.input :end_date, as: :date
+
+    = form_for @project, html: { class: 'form-horizontal' } do |f|
+      = render 'shared/error_messages', object: f.object
+
+      .panel.panel-green.margin-bottom-40
+        .panel-heading
+          %h3.panel-title Project
+        .panel-body
+          .form-group.margin-bottom-20
+            %label.col-sm-2.control-label name
+            .col-sm-10
+              = f.text_field :name, class: 'form-control required', placeholder: 'name'
+          .form-group.margin-bottom-20
+            %label.col-sm-2.control-label start date
+            .col-md-3.col-sm-10
+              = f.date_field :start_date, class: 'form-control required'
+            %label.col-sm-2.control-label end date
+            .col-md-3.col-sm-10
+              = f.date_field :end_date, class: 'form-control required'
+          .form-group.margin-bottom-20
+            %label.col-sm-2.control-label description
+            .col-sm-10
+              = f.text_area :description, class: 'form-control', placeholder: 'description'
+          .form-group.margin-bottom-20
+            %label.col-sm-2.control-label other
+            .col-sm-10
+              = f.text_area :other, class: 'form-control', placeholder: 'other'
       .form-group
         .col-sm-offset-2.col-sm-10
-          = f.button :submit, 'save', class: 'btn-primary'
-          = link_to t('.cancel', :default => t("helpers.links.cancel")), projects_path, :class => 'btn'
-      - if false
-        / company profile
-        .panel.panel-green.margin-bottom-40
-          .panel-heading
-            %h3.panel-title Project
-          .panel-body
-            .form-group.margin-bottom-20
-              %label.col-sm-2.control-label name *
-              .col-sm-10
-                = f.text_field :name, class: 'form-control required', placeholder: 'name'
-            .form-group.margin-bottom-20
-              %label.col-sm-2.control-label start date
-              .col-sm-10
-                = f.date_field :start_date, class: 'form-control required'
-              %label.col-sm-2.control-label end date
-              .col-sm-10
-                = f.date_field :end_date, class: 'form-control required'
-            .form-group.margin-bottom-20
-              %label.col-sm-2.control-label description
-              .col-sm-10
-                = f.text_area :description, class: 'form-control', placeholder: 'description'
-            .form-group.margin-bottom-20
-              %label.col-sm-2.control-label other
-              .col-sm-10
-                = f.text_area :other, class: 'form-control', placeholder: 'other'
-        .form-group
-          .col-sm-offset-2.col-sm-10
-            = f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: 'processing...'}
-            = link_to 'Back', projects_path, :class => "btn btn-default"
-/ /row
+          = f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: 'processing...'}
+          = link_to 'Back', projects_path, :class => "btn btn-default"
+

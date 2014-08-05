@@ -1,0 +1,23 @@
+.col-md-12
+  %table.table.table-striped
+    %thead
+      %th #
+      %th user name
+      %th project
+      %th project name
+      %th talent name
+      %th request
+      %th memo
+      %th offer date
+      %th
+    %tbody
+      - @offers.each do |offer|
+        %tr
+          %td= offer.id
+          %td= offer.user.name
+          %td= offer.project.try(:name)
+          %td= offer.project_name
+          %td= offer.talent.name
+          %td= t("activerecord.attributes.offer.#{offer.request}")
+          %td= offer.memo
+          %td= offer.created_at.strftime("%Y-%m-%d %H:%M:%S")

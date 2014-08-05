@@ -1,8 +1,10 @@
-.col-md-10
+.col-md-12
   %table.table.table-striped
     %thead
       %th #
       %th name
+      %th description
+      %th other
       %th start date
       %th end date
       %th
@@ -11,6 +13,8 @@
         %tr
           %td= project.id
           %td= project.name
+          %td= project.description
+          %td= project.other
           %td= project.start_date.strftime("%Y-%m-%d")
           %td= project.end_date.strftime("%Y-%m-%d")
           %td

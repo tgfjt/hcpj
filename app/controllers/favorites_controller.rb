@@ -18,6 +18,7 @@ class FavoritesController < ApplicationController
   end
   def create
     @favorite = Favorite.new(favorite_param)
+    @favorite.project_name = favorite_param_project_name[:project_name] if params[:project_id] == -1
     @favorite.user = current_user
     if @favorite.save
       flash[:notice] = 'favorite has been completed.'
@@ -32,5 +33,8 @@ class FavoritesController < ApplicationController
 
   def favorite_param
     params.require(:favorite).permit(:project_id, :talent_id, :memo)
+  end
+  def favorite_param_project_name
+    params.require(:favorite).permit(:project_name)
   end
 end

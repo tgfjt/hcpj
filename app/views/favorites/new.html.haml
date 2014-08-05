@@ -22,6 +22,14 @@
           %label
             %input{ type: 'radio', name: 'favorite[project_id]', value: project.id }
             = project.name
+        %label
+          %input{ type: 'radio', name: 'favorite[project_id]', value: -1 }
+          プロジェクト名入力
+
+      %h3
+        project name
+
+      = f.text_field :memo, class: 'form-control'
 
       %h3
         memo

@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727082511) do
+ActiveRecord::Schema.define(version: 20140805030339) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "name"
+    t.string   "role"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,12 +30,27 @@ ActiveRecord::Schema.define(version: 20140727082511) do
     t.string   "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "project_name"
   end
 
-  add_index "favorites", ["project_id", "talent_id", "user_id"], name: "index_favorites_on_project_id_and_talent_id_and_user_id", unique: true, using: :btree
   add_index "favorites", ["project_id"], name: "index_favorites_on_project_id", using: :btree
   add_index "favorites", ["talent_id"], name: "index_favorites_on_talent_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "offers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "talent_id"
+    t.integer  "project_id"
+    t.string   "project_name"
+    t.integer  "request"
+    t.string   "memo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offers", ["project_id"], name: "index_offers_on_project_id", using: :btree
+  add_index "offers", ["talent_id"], name: "index_offers_on_talent_id", using: :btree
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.integer  "photable_id"

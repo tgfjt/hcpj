@@ -9,6 +9,8 @@
           = link_to image_tag(my_favorite.talent.mainimage.url(:thumb), size: "163x181", alt: my_favorite.talent.name), talent_path(my_favorite.talent) if my_favorite.talent.mainimage.presence
           .caption
             = link_to my_favorite.talent.name, talent_path(my_favorite.talent)
+          .caption
+            = link_to 'ask/offer', new_talent_project_offer_path(my_favorite.talent, my_favorite.project), class: 'btn btn-default'
 
 
 .row

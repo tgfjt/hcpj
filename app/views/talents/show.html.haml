@@ -7,6 +7,7 @@
         = @talent.name
         - if user_signed_in? && current_user.projects.exists?
           = link_to 'add my favorite', new_favorites_path(@talent), class: 'btn btn-info'
+          = link_to 'ask/offer', new_talent_offer_path(@talent), class: 'btn btn-info'
   .row
     .col-md-3
       .row

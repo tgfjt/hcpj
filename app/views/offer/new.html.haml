@@ -1,0 +1,80 @@
+= link_to 'back', :back, class: 'btn btn-default'
+
+= form_for @offer, url: talent_offer_index_path do |f|
+  = hidden_field :offer, :talent_id
+  = hidden_field :offer, :project_id
+
+  #contents
+    .page-header
+      .row
+        %h1
+          = @talent.name
+          への Offer
+    .row
+      .col-md-3
+        .row
+          = image_tag @talent.mainimage.url(:large), alt: @talent.name
+
+      .col-md-8.col-md-offset-1
+        .page-header
+          %h4
+            依頼者
+            = current_user.name
+        .page-header
+          %h4
+            Project
+          - if @project
+            = @project.name
+          - else
+            - @selectable_projects.each_with_index do |project, index|
+              .radio
+                %label
+                  %input{ type: 'radio', name: 'offer[project_id]', value: project.id }
+                  = project.name
+              %label
+                %input{ type: 'radio', name: 'offer[project_id]', value: -1 }
+                プロジェクト名入力
+                = f.text_field :project_name, class: 'form-control', placeholder: 'name'
+
+        .page-header
+          %h4
+            リクエスト内容
+          .radio
+            .row
+              %label
+                = f.radio_button :request, :confirm_schedule, checked: true
+                = t('activerecord.attributes.offer.confirm_schedule')
+            .row
+              %label
+                = f.radio_button :request, :request_picture
+                = t('activerecord.attributes.offer.request_picture')
+            .row
+              %label
+                = f.radio_button :request, :request_self_movie
+                = t('activerecord.attributes.offer.request_self_movie')
+            .row
+              %label
+                = f.radio_button :request, :request_action_movie
+                = t('activerecord.attributes.offer.request_action_movie')
+            .row
+              %label
+                = f.radio_button :request, :request_for_appearance
+                = t('activerecord.attributes.offer.request_for_appearance')
+            .row
+              %label
+                = f.radio_button :request, :request_for_audition
+                = t('activerecord.attributes.offer.request_for_audition')
+            .row
+              %label
+                = f.radio_button :request, :other
+                = t('activerecord.attributes.offer.other')
+
+        %h3
+          memo
+        = f.text_area :memo, class: 'form-control'
+
+        %br
+        .row
+          .col-md-6
+            .actions
+              = f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: 'processing...'}

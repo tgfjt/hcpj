@@ -1,0 +1,17 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{:href => "/admin"} HCPJ Admin
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "/admin"} Home
+        %li
+          = link_to 'Offer', admin_offers_path
+
+        - if user_signed_in?
+          %li
+            = link_to 'Sign Out', ''
+
+        - else
+          %li= link_to 'Sign In', ''

@@ -1,0 +1,14 @@
+= form_tag admin_sessions_path, class: 'form-signin' do
+  %h2.form-signin-heading Please Sign In for Admin
+  %input{ type: 'email', name: 'session[email]', class: 'form-control', placeholder: 'Email Address' }
+  %input{ type: 'password', name: 'session[password]', class: 'form-control', placeholder: 'Password' }
+  .checkbox
+    %label
+      %input{ type: 'hidden', name: 'session[remember_me]', value: '0' }
+      %input{ type: 'checkbox', name: 'session[remember_me]', value: '1' } Remember me
+  %button.btn.btn-lg.btn-primary.btn-block{ type: 'submit' } Sign In
+
+%h5 email:
+%h4 admin@gmail.com
+%h5 password
+%h4 00000000
