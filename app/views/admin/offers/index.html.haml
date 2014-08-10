@@ -17,7 +17,10 @@
           %td= offer.user.name
           %td= offer.project.try(:name)
           %td= offer.project_name
-          %td= offer.talent.name
-          %td= t("activerecord.attributes.offer.#{offer.request}")
+          %td= "#{offer.talent.firstname} #{offer.talent.lastname}"
+          %td
+            - offer.requests.each do |request|
+              %p
+                = request.request_ja
           %td= offer.memo
           %td= offer.created_at.strftime("%Y-%m-%d %H:%M:%S")

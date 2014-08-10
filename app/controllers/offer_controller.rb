@@ -8,8 +8,12 @@ class OfferController < ApplicationController
     @offer = Offer.new(offer_param)
     @offer.user = current_user
     @offer.project_name = nil if params[:project_id] == -1
-
     if @offer.save
+      if params[:offer][:offers_requests]
+        ids = params[:offer][:offers_requests][:request_id]
+        ids.each { |id| OfferRequest.create(offer: @offer, request_id: id) }
+      end
+
       flash[:notice] = 'offer has been completed.'
       redirect_to root_path
     else
@@ -20,7 +24,7 @@ class OfferController < ApplicationController
 
   private
   def offer_param
-    params.require(:offer).permit(:talent_id, :project_id, :project_name, :request, :memo)
+    params.require(:offer).permit(:talent_id, :project_id, :project_name, :request, :memo, :offer_requests => [:request_id])
   end
 
   def set_offer

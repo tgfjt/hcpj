@@ -2,6 +2,9 @@ class Offer < ActiveRecord::Base
   belongs_to :talent
   belongs_to :project
   belongs_to :user
+  has_many :offer_requests
+  has_many :requests, through: :offer_requests
+  accepts_nested_attributes_for :offer_requests, allow_destroy: true
 
   validates :project, offer: true
 

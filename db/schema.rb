@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810035229) do
+ActiveRecord::Schema.define(version: 20140810060535) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20140810035229) do
   add_index "favorites", ["project_id"], name: "index_favorites_on_project_id", using: :btree
   add_index "favorites", ["talent_id"], name: "index_favorites_on_talent_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "offer_requests", force: true do |t|
+    t.integer  "offer_id"
+    t.integer  "request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offer_requests", ["offer_id"], name: "index_offer_requests_on_offer_id", using: :btree
+  add_index "offer_requests", ["request_id"], name: "index_offer_requests_on_request_id", using: :btree
 
   create_table "offers", force: true do |t|
     t.integer  "user_id"
@@ -70,6 +80,13 @@ ActiveRecord::Schema.define(version: 20140810035229) do
     t.string   "description"
     t.string   "other"
     t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requests", force: true do |t|
+    t.string   "request_ja"
+    t.string   "request_en"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

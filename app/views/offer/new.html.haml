@@ -39,35 +39,12 @@
         .page-header
           %h4
             リクエスト内容
-          .radio
-            .row
+          - Request.all.each do |request|
+            = f.fields_for :offers_requests do |offer_request|
               %label
-                = f.radio_button :request, :confirm_schedule, checked: true
-                = t('activerecord.attributes.offer.confirm_schedule')
-            .row
-              %label
-                = f.radio_button :request, :request_picture
-                = t('activerecord.attributes.offer.request_picture')
-            .row
-              %label
-                = f.radio_button :request, :request_self_movie
-                = t('activerecord.attributes.offer.request_self_movie')
-            .row
-              %label
-                = f.radio_button :request, :request_action_movie
-                = t('activerecord.attributes.offer.request_action_movie')
-            .row
-              %label
-                = f.radio_button :request, :request_for_appearance
-                = t('activerecord.attributes.offer.request_for_appearance')
-            .row
-              %label
-                = f.radio_button :request, :request_for_audition
-                = t('activerecord.attributes.offer.request_for_audition')
-            .row
-              %label
-                = f.radio_button :request, :other
-                = t('activerecord.attributes.offer.other')
+                = offer_request.check_box :request_id, {multiple: true}, request.id, nil
+                = request.request_ja
+
 
         %h3
           Comment
