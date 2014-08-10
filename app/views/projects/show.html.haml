@@ -1,12 +1,22 @@
 = link_to 'back', :back, class: 'btn btn-default'
 
-%h2
-  = @project.name
+.row
+  .col-md-2
+    %h4 プロジェクト名
+    %h4 プロジェクト期間
+    %h4 description
+    %h4 other
+  .col-md-3
+    %h4= @project.name
+    %h4= @project.start_date.strftime("%Y-%m-%d") + " - " + @project.end_date.strftime("%Y-%m-%d")
+    %h4= @project.description
+    %h4= @project.other
 
 .row
+  %h4 登録タレント
   - @project.talents.each do |talent|
     .col-sm-6.col-md-2
       .thumbnail
-        = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence
+        = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.firstname), project_talent_show_project_detail_path(@project, talent) if talent.mainimage.presence
         .caption
-          = link_to talent.name, talent_path(talent)
+          = link_to talent.firstname, talent_path(talent)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805030339) do
+ActiveRecord::Schema.define(version: 20140809091359) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
@@ -75,13 +75,15 @@ ActiveRecord::Schema.define(version: 20140805030339) do
   end
 
   create_table "talents", force: true do |t|
-    t.string   "name"
+    t.string   "company_name"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "area"
     t.string   "country"
     t.integer  "sex"
     t.integer  "age"
+    t.integer  "height_feet"
+    t.integer  "height_inch"
     t.string   "nationality"
     t.string   "mainimage_file_name"
     t.string   "mainimage_content_type"

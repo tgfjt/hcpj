@@ -1,23 +1,61 @@
-%h2 Talent List
-.row
-  .col-md-10
-    = form_tag(search_talents_path, method: "get", class: "form-inline") do
-      .form-group
-        = text_field :talent, :search_param, placeholder: 'Keyword Search', class: 'form-control', size: '50'
-.row
-  = paginate @talents
-.row
-  - @talents.each do |talent|
-    .col-sm-6.col-md-2
-      .thumbnail
-        = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.name), talent_path(talent) if talent.mainimage.presence
-        .caption
-          = link_to talent.name, talent_path(talent)
-        - if user_signed_in?
+.col-md-9
+  %h2 Talent List
+  .row
+    = paginate @talents
+  .row
+    - @talents.each do |talent|
+      .col-sm-6.col-md-2
+        .thumbnail
+          = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.firstname), talent_path(talent) if talent.mainimage.presence
           .caption
-            = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
-        - if talent.my_favorite_talent? current_user
-          %span.glyphicon.glyphicon-star
-.row
-  = paginate @talents
+            = link_to "#{talent.firstname} #{talent.lastname}", talent_path(talent)
+          - if user_signed_in?
+            .caption
+              = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
+          - if talent.my_favorite_talent? current_user
+            %span.glyphicon.glyphicon-star
+  .row
+    = paginate @talents
 
+.col-md-3
+  %h2 Search
+  = search_form_for(@q, method: "get", class: "form-inline") do |f|
+    .form-group
+      .col-md-4
+        name
+      .col-md-4
+        = f.search_field :firstname_or_lastname_cont, class: 'form-control'
+    .form-group
+      .col-md-4
+        gender
+      .col-md-3
+        = f.select(:sex_eq, Talent.sexes, class: 'form-control')
+    .form-group
+      .col-md-4
+        age
+      .col-md-3
+        = f.search_field :age_gteq, class: 'form-control', size: 2
+      .col-md-1
+        to
+      .col-md-3
+        = f.search_field :age_lteq, class: 'form-control', size: 2
+    .form-group
+      .col-md-4
+        height(feet)
+      .col-md-3
+        = f.search_field :height_feet_gteq, class: 'form-control', size: 2
+      .col-md-1
+        to
+      .col-md-3
+        = f.search_field :height_feet_lteq, class: 'form-control', size: 2
+    .form-group
+      .col-md-4
+        height(inch)
+      .col-md-3
+        = f.search_field :height_inch_gteq, class: 'form-control', size: 2
+      .col-md-1
+        to
+      .col-md-3
+        = f.search_field :height_inch_lteq, class: 'form-control', size: 2
+    .text-center
+      = f.submit 'search', class: 'btn btn-success btn-block'

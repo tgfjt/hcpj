@@ -1,13 +1,9 @@
 class TalentsController < ApplicationController
-  before_action :set_talent, only: [:show, :edit, :update, :add_my_favorite_confirm, :add_my_favorite]
+  before_action :set_talent, only: [:show, :edit, :update]
 
   def index
-    @talents = Talent.all.page params[:page]
-  end
-
-  def search
-    @talents = Talent.where("name like ?", "%#{params[:talent][:search_param]}%").page params[:page]
-    render 'index'
+    @q = Talent.search(params[:q])
+    @talents = @q.result(distinct: true).page params[:page]
   end
 
   def new
@@ -44,7 +40,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.require(:talent).permit(:name,:firstname,:lastname,:mainimage,:age,:sex, :image_delete , { photos_attributes: [ :image, :remove_file, :id, :_destroy ] })
+    params.require(:talent).permit(:name,:firstname,:lastname,:mainimage,:age,:height_feet,:height_inch,:sex, :image_delete , { photos_attributes: [ :image, :remove_file, :id, :_destroy ] })
   end
 
   def set_talent

@@ -4,14 +4,16 @@
   .page-header
     .row
       %h1
-        = @talent.name
+        = "#{@talent.firstname} #{@talent.lastname}"
         - if user_signed_in? && current_user.projects.exists?
           = link_to 'add my favorite', new_favorites_path(@talent), class: 'btn btn-info'
           = link_to 'ask/offer', new_talent_offer_path(@talent), class: 'btn btn-info'
+        - if can? :production, current_user
+          = link_to 'edit', edit_talent_path(@talent), class: 'btn btn-warning'
   .row
     .col-md-3
       .row
-        = image_tag @talent.mainimage.url(:large), alt: @talent.name
+        = image_tag @talent.mainimage.url(:large), alt: @talent.firstname
       .row
         %table.table
           %tbody
@@ -33,7 +35,7 @@
             - @myfavorites.each do |favorite|
               %tr
                 %td
-                  %h4= favorite.project.try(:name)
+                  %h4= favorite.project.try(:name) ? favorite.project.try(:name) : 'non project'
                 %td
                   %h4= favorite.try(:memo)
       .page-header

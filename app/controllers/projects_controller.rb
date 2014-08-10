@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :show_talent]
   def index
     @projects = Project.my_project current_user
   end
@@ -38,6 +38,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+  end
+
+  def show_talent
+    @talent = Favorite.where(project: @project, user: current_user).first
   end
 
   private

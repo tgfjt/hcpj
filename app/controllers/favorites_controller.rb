@@ -16,9 +16,11 @@ class FavoritesController < ApplicationController
     @favorite.talent_id = params[:talent_id]
     @selectable_projects = Project.selectable_my_project current_user
   end
+
   def create
     @favorite = Favorite.new(favorite_param)
-    @favorite.project_name = favorite_param_project_name[:project_name] if params[:project_id] == -1
+    @favorite.project_name = nil unless @favorite.project_id == -1
+
     @favorite.user = current_user
     if @favorite.save
       flash[:notice] = 'favorite has been completed.'
@@ -29,12 +31,25 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def show_project_detail
+    @talent = Talent.find(params[:talent_id])
+    @project = Project.find(params[:project_id])
+    @favorite = Favorite.where(project: @project, talent: @talent).first
+  end
+
+  def project_detail
+    @talent = Talent.find(params[:talent_id])
+    @project = Project.find(params[:project_id])
+    @favorite = Favorite.where(project: @project, user: current_user, talent: @talent).first
+    if @favorite.update(favorite_param)
+      flash[:notice] = 'regist complete'
+      redirect_to project_path @project
+    end
+  end
+
   private
 
   def favorite_param
-    params.require(:favorite).permit(:project_id, :talent_id, :memo)
-  end
-  def favorite_param_project_name
-    params.require(:favorite).permit(:project_name)
+    params.require(:favorite).permit(:project_id, :talent_id, :memo, :project_name)
   end
 end

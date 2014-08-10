@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   get 'home/index'
 
   root to: 'talents#index'
-  resources :projects
+
+  resources :projects do
+    resources :talents do
+      get 'show_project_detail', to: 'favorites#show_project_detail'
+      patch 'project_detail', to: 'favorites#project_detail'
+    end
+  end
+
   resources :talents do
     collection do
       get 'search'
+      get 'search_keywords'
     end
     member do
       get  'add_my_favorite', to: 'talents#add_my_favorite_confirm'

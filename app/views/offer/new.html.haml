@@ -9,7 +9,7 @@
       .row
         %h1
           = @talent.name
-          への Offer
+          への Ask/Offer
     .row
       .col-md-3
         .row
@@ -33,7 +33,7 @@
                   = project.name
             %label
               %input{ type: 'radio', name: 'offer[project_id]', value: -1 }
-              プロジェクト名入力
+              任意
               = f.text_field :project_name, class: 'form-control', placeholder: 'project name'
 
         .page-header
@@ -70,7 +70,7 @@
                 = t('activerecord.attributes.offer.other')
 
         %h3
-          memo
+          Comment
         = f.text_area :memo, class: 'form-control'
 
         %br

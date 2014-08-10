@@ -1,25 +1,28 @@
 - @favorite_projects.each do |favorite|
   .row
-    %h4
-      = favorite.project.name
 
     - @my_project[favorite.project.name].each do |my_favorite|
       .col-sm-6.col-md-2
+        %h4
+          = favorite.project.name
+        = my_favorite.memo
         .thumbnail
-          = link_to image_tag(my_favorite.talent.mainimage.url(:thumb), size: "163x181", alt: my_favorite.talent.name), talent_path(my_favorite.talent) if my_favorite.talent.mainimage.presence
+          = link_to image_tag(my_favorite.talent.mainimage.url(:thumb), size: "163x181", alt: my_favorite.talent.firstname), talent_path(my_favorite.talent) if my_favorite.talent.mainimage.presence
           .caption
-            = link_to my_favorite.talent.name, talent_path(my_favorite.talent)
+            = link_to "#{my_favorite.talent.firstname} #{my_favorite.talent.lastname}", talent_path(my_favorite.talent)
           .caption
             = link_to 'ask/offer', new_talent_project_offer_path(my_favorite.talent, my_favorite.project), class: 'btn btn-default'
 
 
 .row
-  - if @my_favorites_non_project.presence
-    %h4 non project
   - @my_favorites_non_project.each do |favorite_non_project|
     .col-sm-6.col-md-2
+      %h4
+        = favorite_non_project.project_name ? favorite_non_project.project_name : 'non project'
+      = favorite_non_project.memo
       .thumbnail
-        = link_to image_tag(favorite_non_project.talent.mainimage.url(:thumb), size: "163x181", alt: favorite_non_project.talent.name), talent_path(favorite_non_project.talent) if favorite_non_project.talent.mainimage.presence
+        = link_to image_tag(favorite_non_project.talent.mainimage.url(:thumb), size: "163x181", alt: favorite_non_project.talent.firstname), talent_path(favorite_non_project.talent) if favorite_non_project.talent.mainimage.presence
         .caption
-          = link_to favorite_non_project.talent.name, talent_path(favorite_non_project.talent)
-
+          = link_to "#{favorite_non_project.talent.firstname} #{favorite_non_project.talent.lastname}", talent_path(favorite_non_project.talent)
+        .caption
+          = link_to 'ask/offer', new_talent_offer_path(favorite_non_project.talent, favorite_non_project.project), class: 'btn btn-default'

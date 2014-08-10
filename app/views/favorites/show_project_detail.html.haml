@@ -1,0 +1,32 @@
+= link_to 'back', :back, class: 'btn btn-default'
+
+#contents
+  .page-header
+    .row
+      %h1
+        = "#{@project.name} : #{@talent.firstname} #{@talent.lastname}"
+  .row
+    .col-md-3
+      .row
+        = image_tag @talent.mainimage.url(:large), alt: @talent.firstname
+      .row
+        %table.table
+          %tbody
+            %tr
+              %td
+                %h4 age
+              %td
+                %h4= @talent.age
+            %tr
+              %td
+                %h4 gender
+              %td
+                %h4= @talent.sex
+    .col-md-8.col-md-offset-1
+      = form_for @favorite, url: project_talent_project_detail_path(@project, @talent) do |f|
+        .page-header
+          %h3 memo
+          = f.text_area :memo, class: 'form-control'
+        .col-md-6
+          .actions
+            = f.submit "regist", class: "btn btn-large btn-primary", data: {disable_with: '処理中です'}

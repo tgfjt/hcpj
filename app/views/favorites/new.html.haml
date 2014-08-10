@@ -4,7 +4,7 @@
   %h2 Add Favorite
   .row
     %h4
-      Which the project do you add favorite to?
+      Which project do you add favorite to?
   .row
 
     = form_for @favorite do |f|
@@ -22,14 +22,10 @@
           %label
             %input{ type: 'radio', name: 'favorite[project_id]', value: project.id }
             = project.name
-        %label
-          %input{ type: 'radio', name: 'favorite[project_id]', value: -1 }
-          プロジェクト名入力
-
-      %h3
-        project name
-
-      = f.text_field :memo, class: 'form-control'
+      %label
+        %input{ type: 'radio', name: 'favorite[project_id]', value: -1 }
+        プロジェクト名入力
+        = f.text_field :project_name, class: 'form-control'
 
       %h3
         memo
