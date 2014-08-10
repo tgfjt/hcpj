@@ -3,9 +3,9 @@
   .row
     = paginate @talents
   .row
-    - @talents.each do |talent|
+    - @talents.each_with_index do |talent, index|
       .col-sm-6.col-md-2
-        .thumbnail
+        .thumbnail{style: "height:300px"}
           = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.firstname), talent_path(talent) if talent.mainimage.presence
           .caption
             = link_to "#{talent.firstname} #{talent.lastname}", talent_path(talent)
