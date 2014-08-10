@@ -5,6 +5,10 @@
     .row
       %h1
         = "#{@project.name} : #{@talent.firstname} #{@talent.lastname}"
+      .caption
+        = link_to 'ask/offer', new_talent_offer_path(@talent), class: 'btn btn-default'
+        = link_to 'share', '', class: 'btn btn-default'
+
   .row
     .col-md-3
       .row

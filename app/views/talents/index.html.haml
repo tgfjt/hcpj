@@ -12,6 +12,8 @@
           - if user_signed_in?
             .caption
               = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
+            .caption
+              = link_to 'share', '', class: 'btn btn-default'
           - if talent.my_favorite_talent? current_user
             %span.glyphicon.glyphicon-star
   .row
@@ -41,21 +43,12 @@
         = f.search_field :age_lteq, class: 'form-control', size: 2
     .form-group
       .col-md-4
-        height(feet)
+        height(cm)
       .col-md-3
-        = f.search_field :height_feet_gteq, class: 'form-control', size: 2
+        = f.search_field :height_cm_gteq, class: 'form-control', size: 2
       .col-md-1
         to
       .col-md-3
-        = f.search_field :height_feet_lteq, class: 'form-control', size: 2
-    .form-group
-      .col-md-4
-        height(inch)
-      .col-md-3
-        = f.search_field :height_inch_gteq, class: 'form-control', size: 2
-      .col-md-1
-        to
-      .col-md-3
-        = f.search_field :height_inch_lteq, class: 'form-control', size: 2
+        = f.search_field :height_cm_lteq, class: 'form-control', size: 2
     .text-center
       = f.submit 'search', class: 'btn btn-success btn-block'

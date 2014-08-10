@@ -9,8 +9,8 @@
           %h3.panel-title talent profile
         .panel-body
           .form-group.margin-bottom-20
-            %label name *
-            = f.text_field :name, class: 'form-control required', placeholder: 'name'
+            %label company name *
+            = f.text_field :company_name, class: 'form-control required', placeholder: 'company name'
           .form-group.margin-bottom-20
             %label firstname *
             = f.text_field :firstname, class: 'form-control required', placeholder: 'firstname'
@@ -21,10 +21,8 @@
             %label age
             = f.number_field :age, class: 'form-control', placeholder: 'age'
           .form-group.form-inline
-            %label height
-            = f.number_field :height_feet, class: 'form-control', placeholder: 'feet'
-            or
-            = f.number_field :height_inch, class: 'form-control', placeholder: 'inch'
+            %label height(cm)
+            = f.number_field :height_cm, class: 'form-control', placeholder: 'cm'
           .form-group.margin-bottom-20
             %label gender
             = f.select :sex, Talent.sexes.keys, class: 'form-control'

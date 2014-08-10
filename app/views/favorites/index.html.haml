@@ -12,6 +12,8 @@
             = link_to "#{my_favorite.talent.firstname} #{my_favorite.talent.lastname}", talent_path(my_favorite.talent)
           .caption
             = link_to 'ask/offer', new_talent_project_offer_path(my_favorite.talent, my_favorite.project), class: 'btn btn-default'
+          .caption
+            = link_to 'share', '', class: 'btn btn-default'
 
 
 .row

@@ -8,12 +8,12 @@
     .page-header
       .row
         %h1
-          = @talent.name
+          = "#{@talent.firstname} #{@talent.lastname}"
           への Ask/Offer
     .row
       .col-md-3
         .row
-          = image_tag @talent.mainimage.url(:large), alt: @talent.name
+          = image_tag @talent.mainimage.url(:large), alt: @talent.firstname
 
       .col-md-8.col-md-offset-1
         .page-header

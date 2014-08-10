@@ -17,7 +17,7 @@ class TalentsController < ApplicationController
       flash[:notice] = 'regist complete'
       redirect_to root_path
     else
-      render action :new
+      render action: :new
     end
   end
 
@@ -30,7 +30,7 @@ class TalentsController < ApplicationController
       flash[:notice] = 'regist complete'
       redirect_to talent_path @talent
     else
-      render action :new
+      render action: :edit
     end
   end
 
@@ -40,7 +40,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.require(:talent).permit(:name,:firstname,:lastname,:mainimage,:age,:height_feet,:height_inch,:sex, :image_delete , { photos_attributes: [ :image, :remove_file, :id, :_destroy ] })
+    params.require(:talent).permit(:company_name,:firstname,:lastname,:mainimage,:age,:height_cm,:height_feet,:height_inch,:sex, :image_delete , { photos_attributes: [ :image, :remove_file, :id, :_destroy ] })
   end
 
   def set_talent

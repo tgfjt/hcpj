@@ -30,10 +30,6 @@ class Talent < ActiveRecord::Base
   has_attached_file :mainimage, :styles => { large: "300x400", medium: "300x200>", thumb: "163x181>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :mainimage, :content_type => /\Aimage\/.*\Z/
 
-  validates :age, numericality: true
-  validates :height_feet, numericality: true
-  validates :height_inch, numericality: true
-
   # enum sex: [:male, :female] unless instance_methods.include? :sex
   enum sex: { male: 0, female: 1 }
 
