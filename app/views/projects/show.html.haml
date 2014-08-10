@@ -8,7 +8,7 @@
     %h4 other
   .col-md-3
     %h4= @project.name
-    %h4= @project.start_date.strftime("%Y-%m-%d") + " - " + @project.end_date.strftime("%Y-%m-%d")
+    %h4= "#{@project.start_date ? @project.start_date.strftime("%Y-%m-%d") : ''} - #{@project.end_date ? @project.end_date.strftime("%Y-%m-%d") : ''}"
     %h4= @project.description
     %h4= @project.other
 
