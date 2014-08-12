@@ -4,16 +4,11 @@
     = paginate @talents
   .row
     - @talents.each_with_index do |talent, index|
-      .col-sm-6.col-md-2
-        .thumbnail{style: "height:300px"}
+      .col-sm-6.col-md-3
+        .thumbnail{style: "height:280px"}
           = link_to image_tag(talent.mainimage.url(:thumb), size: "163x181", alt: talent.firstname), talent_path(talent) if talent.mainimage.presence
           .caption
             = link_to "#{talent.firstname} #{talent.lastname}", talent_path(talent)
-          - if user_signed_in?
-            .caption
-              = link_to 'ask/offer', new_talent_offer_path(talent), class: 'btn btn-default'
-            .caption
-              = link_to 'share', '', class: 'btn btn-default'
           - if talent.my_favorite_talent? current_user
             %span.glyphicon.glyphicon-star
   .row

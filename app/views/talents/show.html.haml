@@ -29,16 +29,6 @@
                 %h4= @talent.sex
     .col-md-8.col-md-offset-1
       .page-header
-        %h3= link_to 'My Favorite', favorites_path
-        %table.table
-          %tbody
-            - @myfavorites.each do |favorite|
-              %tr
-                %td
-                  %h4= favorite.project.try(:name) ? favorite.project.try(:name) : 'non project'
-                %td
-                  %h4= favorite.try(:memo)
-      .page-header
         %h3 Photos
       - @talent.photos.each do |photo|
         %a{"data-toggle" => "lightbox", :href => "#demoLightbox"}
